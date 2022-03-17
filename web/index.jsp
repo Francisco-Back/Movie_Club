@@ -19,7 +19,7 @@
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="index.jsp"> <img src="Imagenes/Movie Club.png" width="100" height="80" alt="alt"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -53,7 +53,7 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
         <form  class="form-inline my-2 my-lg-0" action="ControlVista" method="POST">
-            <button  class="btn btn-outline-success"  type="submit" value="Login" name="Inicio">Login</button>
+            <button  class="btn btn-outline-primary"  type="submit" value="Login" name="Inicio">Login</button>
            </form>
   </div>
 </nav>
