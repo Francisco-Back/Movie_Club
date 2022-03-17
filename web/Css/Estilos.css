@@ -10,6 +10,21 @@ and open the template in the editor.
 body{
      font: 100% sans-serif;
 }
+
+.box{
+    border-radius: 25px;
+    width: 320px;
+    height: 420px;
+    background-color:  rgba(000, 0, 0, 0.8);
+    color: #ffffff;
+    top: 60%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    
+}
 #dg{
         position: fixed;
     width: 100%;
@@ -17,19 +32,6 @@ body{
     top: 0;
     left: 0;
     z-index: -1;
-}
-.box{
-    width: 320px;
-    height: 420px;
-    background-color:  rgba(000, 0, 0, 0.8);
-    color: #ffffff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
-    
 }
 #Logo{
     display: block;

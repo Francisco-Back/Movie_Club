@@ -21,7 +21,7 @@
 
             <!-- ingreso de mensaje -->
             <h1>Login Here</h1>
-            <form  action="Controlador" method="POST">
+            <form  action="ControLogin" method="POST">
                 <!-- creando Usuario -->
                 <label for="Nombre Usuario"> Usuario </label>
                 <input type="text" placeholder="Usuario" name="txtUser"/> 

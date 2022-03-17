@@ -14,7 +14,7 @@
         
     </head>
     <body>
-          <img  src="Imagenes/Fondo_Login.png" alt="Fondo" id="dg"/>
+         
         <h1>Cartelera</h1>
         <form  action="ControlVista" method="POST">
            <input  type="submit" value="Login" name="Inicio">

@@ -13,10 +13,10 @@
         <title>Error Sesion</title>
     </head>
     <body>
-        <img  src="Imagenes/29490_1920_1200.jpg" alt="Fondo" id="dg"/>
+        <img  src="Imagenes/Fondo_Login.png" alt="Fondo" id="dg"/>
 
         <!-- Ingreso imagen logo -->
-        <img src="Imagenes/LogoEmpresa.png" alt="Panel" id="Logo"/>.
+        <img src="Imagenes/Movie Club.png" alt="Panel" id="Logo"/>.
               <div class="box">
 
             <!-- ingreso de mensaje -->
