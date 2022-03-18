@@ -46,8 +46,12 @@ public class ControLogin extends HttpServlet {
       if(accion.equals("Login")){
           String usuario=request.getParameter("txtUser");
           String password=request.getParameter("txtpassword");
+               if(usuario !=null && password !=null){
+                 request.getRequestDispatcher("LoginError.jsp").forward(request, response);
+            }
             String Pusuario="Root";
             String Ppassword="toor";
+           
           if(password.equals(Ppassword) && usuario.equals(Pusuario)){
               request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
               
@@ -57,9 +61,7 @@ public class ControLogin extends HttpServlet {
               
           }
           
-               if(usuario !=null && password!=null){
-                 request.getRequestDispatcher("LoginError.jsp").forward(request, response);
-            }
+           
       }else{
            request.getRequestDispatcher("index.jsp").forward(request, response);
            

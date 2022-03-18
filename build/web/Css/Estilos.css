@@ -12,6 +12,8 @@ body{
 }
 
 .box{
+    border-style: dotted;
+    border-color: white;
     border-radius: 25px;
     width: 320px;
     height: 420px;
@@ -23,10 +25,11 @@ body{
     transform: translate(-50%,-50%);
     box-sizing: border-box;
     padding: 70px 30px;
-    
+    z-index: -1;
 }
 #dg{
-        position: fixed;
+
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -38,8 +41,9 @@ body{
     width: 25%;
     height: 25%;
    top: -50px;
-        margin-left: auto;
+   margin-left: auto;
   margin-right: auto;
+  
 }
 .box label{
        margin: 0;
