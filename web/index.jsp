@@ -12,11 +12,10 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>Movie Club</title>
-          <link rel="stylesheet" type="text/css" href="Css/Estilos.css" media="screen" />
-          <link rel="stylesheet" type="text/css" href="Css/bootstrap.min.css" media="screen" />
-          <link href="carousel.css" rel="stylesheet">
-          <link href="Css/carousel.css" rel="stylesheet">.
-          <style>
+        <link href="Css/bootstrap.min.css" rel="stylesheet">
+        
+         
+                <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -30,11 +29,17 @@
           font-size: 3.5rem;
         }
       }
+  
     </style>
+    <link href="Css/carousel.css" rel="stylesheet">. PORQUE
+    </head> 
+          
+    
         
-    </head>
+  
     
     <body>
+        <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.jsp"> <img src="Imagenes/Logo Movie.png" width="119" height="80" alt="alt"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +79,7 @@
            </form>
   </div>
 </nav>
-        
+        </header>
 <main>
 
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
