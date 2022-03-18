@@ -3,21 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controlador;
-
+/*
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-/*import javax.servlet.ServletException;
+import java.io.PrintWriter;*/
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;*/
+import java.io.PrintWriter;
+
 
 
 /**
@@ -44,20 +46,20 @@ public class ControLogin extends HttpServlet {
       if(accion.equals("Login")){
           String usuario=request.getParameter("txtUser");
           String password=request.getParameter("txtpassword");
-            int r = 0;
-            if(usuario !=null && password!=null){
-                 request.getRequestDispatcher("LoginError.jsp").forward(request, response);
-            }
-        
-          if(r==1){
-              request.getSession().setAttribute("usuario", usuario);
-              request.getRequestDispatcher("ControladorPrincipal?menu=Principal").forward(request, response);
+            String Pusuario="Root";
+            String Ppassword="toor";
+          if(password.equals(Ppassword) && usuario.equals(Pusuario)){
+              request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
               
           }else{
-              request.getRequestDispatcher("LoginError.jsp").forward(request, response);
+              request.getRequestDispatcher("LoginError.jsp").forward(request, response);   
               
               
           }
+          
+               if(usuario !=null && password!=null){
+                 request.getRequestDispatcher("LoginError.jsp").forward(request, response);
+            }
       }else{
            request.getRequestDispatcher("index.jsp").forward(request, response);
            
