@@ -13,6 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>Movie Club</title>
         <link href="Css/bootstrap.min.css" rel="stylesheet">
+        <link href="Css/Principall.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+           <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
         
          
                 <style>
@@ -31,10 +34,9 @@
       }
   
     </style>
-    <link href="Css/carousel.css" rel="stylesheet">. PORQUE
-    </head> 
+    <link href="Css/carousel.css" rel="stylesheet">
           
-    
+      </head>
         
   
     
@@ -220,6 +222,7 @@
     <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 </main>
+           <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
         <h1>Cartelera</h1>
             <form  class="form-inline my-2 my-lg-0" action="ControlPrincipal" method="POST">
@@ -227,3 +230,4 @@
            </form>
     </body>
 </html>
+
