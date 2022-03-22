@@ -82,6 +82,10 @@
   </div>
 </nav>
         </header>
+    <body><!-- comment -->
+        <h1 class="align-content-end">Cartelera</h1>
+           
+    </body>
 <main>
 
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -224,10 +228,7 @@
 </main>
            <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-        <h1>Cartelera</h1>
-            <form  class="form-inline my-2 my-lg-0" action="ControlPrincipal" method="POST">
-            <button  class="btn btn-outline-primary"  type="submit" value="Login" name="Inicio">Peliculas</button>
-           </form>
+     
     </body>
 </html>
 
