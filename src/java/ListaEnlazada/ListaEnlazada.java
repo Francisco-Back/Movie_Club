@@ -39,13 +39,23 @@ public class ListaEnlazada {
     }
         
         //Mostrar la lista
-        public void Recorrer_Lista(){
-            if(!Vacia()){
+        public Nodo Obtener_Lista(Nodo NLista){
+           
+                Actual=NLista;
+                if(Actual==null){
                 Actual=Primero;
-                while(Actual!=null){
+                }else{
+                  Actual=Actual.siguiente;
                     
                 }
-            }
+               
+            return Actual;
         }
+        
+        public void Recorrer_Lista(){
+            Actual=Obtener_Lista(Actual);
+            
+        }
+        
     
 }

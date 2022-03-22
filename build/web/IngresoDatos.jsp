@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%-ingreso de datos-%>
         <h1>Hello World!</h1>
     </body>
 </html>
