@@ -4,16 +4,22 @@
  */
 package Controlador;
 import ListaEnlazada.ListaEnlazada;
+import Modelo.Pelicula;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.File;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 /*import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;*/
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
   ListaEnlazada Pelicula=new ListaEnlazada();
+  Pelicula pelicula=new  Pelicula();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,8 +50,19 @@ public class ControlPrincipal extends HttpServlet {
     String Accion=request.getParameter("accion");
     switch(Accion){
         case "Garchivo":
+            //Metodo que Crea la ruta del archivo
             try {
                 FileItemFactory file =new  DiskFileItemFactory();
+                ServletFileUpload fileUpload=new ServletFileUpload(file);
+                List items=fileUpload.parseRequest((RequestContext) request);
+                for (int i = 0; i < items.size(); i++) {
+                    FileItem fileItem= (FileItem)items.get(i);
+                    if(!fileItem.isFormField()){
+                        File f=new File("Movie_Club\\web\\Imagenes"+fileItem.getName());
+                        fileItem.write(f);
+                        
+                    }
+                }
                 
         } catch (Exception e) {
         }
