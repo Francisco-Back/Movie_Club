@@ -52,9 +52,9 @@ public class ListaEnlazada {
             return Actual;
         }
         
-        public void Recorrer_Lista(){
+        public Pelicula Recorrer_Lista(){
             Actual=Obtener_Lista(Actual);
-            
+            return Actual.Dato;
         }
         
     
