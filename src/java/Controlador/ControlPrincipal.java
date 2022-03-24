@@ -67,8 +67,9 @@ public class ControlPrincipal extends HttpServlet {
               List items=fileUpload.parseRequest(new ServletRequestContext(request));
                System.out.println("Aqui muere le programa ya no ");
                 for (int i = 0; i < items.size(); i++) {
-                     System.out.println("si ingreso for");
+                     System.out.println("si ingreso for"+i);
                     FileItem fileItem= (FileItem)items.get(i);
+                    
                     if(!fileItem.isFormField()){
                         File f=new File("C:\\Imagenes\\"+fileItem.getName());
                         fileItem.write(f);
@@ -76,6 +77,7 @@ public class ControlPrincipal extends HttpServlet {
                         System.out.println("encontroimagen");
                     }else{
                         DT.add(fileItem.getString());
+                        System.out.println(fileItem.getString());
                        
                     }
                 }
@@ -92,7 +94,7 @@ public class ControlPrincipal extends HttpServlet {
         }
             break;
         case "Index":
-            request.getRequestDispatcher("ControlPrincipal.jsp").forward(request, response);
+            request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
             break;
         case "Lista": 
                 ListarP();

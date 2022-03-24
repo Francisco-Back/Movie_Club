@@ -10,10 +10,12 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" type="text/css" href="Css/Estilos.css" media="screen" />
         <link href="Css/bootstrap.min.css" rel="stylesheet">
         <title>INGRESO DATOS</title>
     </head>
     <body>
+          <img  src="Imagenes/Fondo_Login.png" alt="Fondo" id="dg"/>
         <div class="container mt-4">
             <div class="form-group">
                 <%-- Formulario manda datos a controlprincipal y enctype imagenes--%>
@@ -38,11 +40,11 @@
                                 <%-- Reseña --%>
                                  <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Reseña</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input type="text"  class="form-control"name="TxtResena"rows="3">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Sinopsis</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input type="text" class="form-control"name="TxtSinopsis" rows="3">
                                 </div>
 
                                 <%-- Ingreso de imagen --%>
