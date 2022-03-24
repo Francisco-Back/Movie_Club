@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
   ListaEnlazada Pelicula=new ListaEnlazada();
-  Pelicula pelicula=new  Pelicula();
+  String Movie;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -74,7 +74,7 @@ public class ControlPrincipal extends HttpServlet {
                     if(!fileItem.isFormField()){
                         File f=new File("C:\\Imagenes\\"+fileItem.getName());
                         fileItem.write(f);
-                      pelicula.setImagen(f.getAbsolutePath());
+                      Movie=(f.getAbsolutePath());
                         System.out.println("encontroimagen");
                     }else{
                         DT.add(fileItem.getString());
@@ -85,12 +85,8 @@ public class ControlPrincipal extends HttpServlet {
                         break;
                     }
                 }
-              
-                pelicula.setNOriginal(DT.get(0));
-                pelicula.setNPelicula(DT.get(1));
-                pelicula.setResena(DT.get(2));
-                pelicula.setSinopsis(DT.get(3));
-                 Pelicula.AgregarPrimero(pelicula);
+              Pelicula.AgregarPrimero(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
+
    
                   request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
                 

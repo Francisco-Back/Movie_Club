@@ -12,20 +12,21 @@ import Modelo.Pelicula;
  */
 public class Nodo {
     // se crea los parametros para el nodo
-   public Pelicula Dato;
+   Pelicula Dato;
    Nodo siguiente;
    Nodo anterior;
- 
-//se crea el constructor de nodo
-    public Nodo(Pelicula Dato, Nodo siguiente, Nodo anterior) {
-        this.Dato = Dato;
-        this.siguiente = siguiente;
-        this.anterior = anterior;
-    }
     // por si la lista esta vacia 
       public Nodo(Pelicula Dato){
        this(Dato,null,null);
    }
+//se crea el constructor de nodo
+    public Nodo(Pelicula Envio, Nodo D, Nodo I) {
+        Dato = Envio;
+        siguiente = D;
+        anterior = I;
+    }
+ 
+      
 
 
 

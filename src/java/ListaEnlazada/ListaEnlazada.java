@@ -34,7 +34,7 @@ public class ListaEnlazada {
          Primero=new Nodo(Dato, Primero,null);
          Primero.siguiente.anterior=Primero;
      } else{
-         Primero=Primero=new Nodo(Dato);
+         Primero=Ultimo=new Nodo(Dato);
      }
     }
         
@@ -82,7 +82,7 @@ public class ListaEnlazada {
                 String s="<=>";
                 Actual=Primero;
                 while (Actual!=null) {                    
-                    s=s+"["+ Actual.Dato+"]<=>";
+                    s=s+"["+ Actual.Dato+"]<=>\n";
                      System.out.println(s);
                     Actual=Actual.siguiente;
                    
