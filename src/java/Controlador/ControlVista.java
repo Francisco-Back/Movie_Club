@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controlador;
+import Modelo.Pelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -33,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControlVista", urlPatterns = {"/ControlVista"})
 public class ControlVista extends HttpServlet {
-
+Pelicula Carrosul=new  Pelicula();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,7 +50,7 @@ public class ControlVista extends HttpServlet {
         
               request.getRequestDispatcher("Login.jsp").forward(request, response);
               
-              
+              Pelicula pelicula=new  Pelicula();
          
 
     }

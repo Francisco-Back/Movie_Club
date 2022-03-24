@@ -97,7 +97,8 @@ public class ControlPrincipal extends HttpServlet {
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
             break;
         case "Lista": 
-                ListarP();
+            request.setAttribute("Lista", ListarP());
+            
             break;
             
             default:
