@@ -17,7 +17,7 @@
         <div class="container mt-4">
             <div class="form-group">
                 <%-- Formulario manda datos a controlprincipal y enctype imagenes--%>
-                <form class="col-md-6" action="ControlPrincipal?accion=Garchivo" method="post" enctype="multipart/form-data">
+                <form class="col-md-6" action="ControlPrincipal?accion=Garchivo" method="POST" enctype="multipart/form-data">
                     <div class="card">
                         <div class="card-header text-center">
                             <h3>Ingreso de Datos Carrosuel</h3>
@@ -53,7 +53,7 @@
 
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-primary" name="envio" value="Guardar" >Cargar Info</button>
+                                <button class="btn btn-outline-primary" name="envio" value="Garchivo" >Cargar Info</button>
                             </div>
                         </div> 
                 </form>
@@ -61,10 +61,10 @@
             </div>
         </div>
     </div>
-        <div class="  container mt-4  ">
+ <div class="  container mt-4  ">
             <div class="form-group">
                 <%-- Formulario manda datos a controlprincipal y enctype imagenes--%>
-                <form class="col-md-6" action="ControlPrincipal" method="post" enctype="multipart/form-data">
+                <form class="col-md-6" action="ControlPrincipal?accion=GarchivoP" method="POST" enctype="multipart/form-data">
                     <div class="card">
                         <div class="card-header text-center">
                             <h3>Ingreso de Datos Populares</h3>
@@ -100,15 +100,14 @@
 
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-primary" name="envio" value="Guardar" >Cargar Info</button>
+                                <button class="btn btn-outline-primary" name="envio" value="GarchivoP" >Cargar Info</button>
                             </div>
                         </div> 
                 </form>
 
             </div>
         </div>
-    </div>
-
+    </div>       
 
 </body>
 

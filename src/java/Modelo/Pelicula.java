@@ -9,7 +9,7 @@ package Modelo;
  * @author Francisco Back
  */
 public class Pelicula {
-   public int Serial;
+
    public String NOriginal;
    public String NPelicula;
    public String Resena;
@@ -21,21 +21,12 @@ public class Pelicula {
        
    }
 
-    public Pelicula(int Serial, String NOriginal, String NPelicula, String Resena, String Sinopsis, String Imagen) {
-        this.Serial = Serial;
+    public Pelicula(String NOriginal, String NPelicula, String Resena, String Sinopsis, String Imagen) {
         this.NOriginal = NOriginal;
         this.NPelicula = NPelicula;
         this.Resena = Resena;
         this.Sinopsis = Sinopsis;
         this.Imagen = Imagen;
-    }
-
-    public int getSerial() {
-        return Serial;
-    }
-
-    public void setSerial(int Serial) {
-        this.Serial = Serial;
     }
 
     public String getNOriginal() {
@@ -80,8 +71,10 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" + "Serial=" + Serial + ", NOriginal=" + NOriginal + ", NPelicula=" + NPelicula + ", Resena=" + Resena + ", Sinopsis=" + Sinopsis + ", Imagen=" + Imagen + '}';
+        return "Pelicula{" + "NOriginal=" + NOriginal + ", NPelicula=" + NPelicula + ", Resena=" + Resena + ", Sinopsis=" + Sinopsis + ", Imagen=" + Imagen + '}';
     }
+
+   
    
   
     
