@@ -12,25 +12,26 @@ import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import java.util.ArrayList;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import ListaEnlazada.ListaEnlazada;
 import Modelo.Pelicula;
 
-///*
+/*
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
-//*/
-/*
+
+*/
+///*
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-*/
+//*/
 
 /**
  *
@@ -67,7 +68,7 @@ public class ControlPrincipal extends HttpServlet {
               List items=fileUpload.parseRequest(new ServletRequestContext(request));
                System.out.println("Aqui muere le programa ya no ");
                 for (int i = 0; i < items.size(); i++) {
-                     System.out.println("si ingreso for"+i);
+                     System.out.println("si ingreso for" +i);
                     FileItem fileItem= (FileItem)items.get(i);
                     
                     if(!fileItem.isFormField()){
@@ -79,6 +80,9 @@ public class ControlPrincipal extends HttpServlet {
                         DT.add(fileItem.getString());
                         System.out.println(fileItem.getString());
                        
+                    }
+                    if(i==5){
+                        break;
                     }
                 }
               
@@ -94,11 +98,17 @@ public class ControlPrincipal extends HttpServlet {
         }
             break;
         case "Index":
+          Pelicula.Recorrer();
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
+           
             break;
         case "Lista": 
             request.setAttribute("Lista", ListarP());
-            
+        
+            break;
+                case "Regreso": 
+           request.getRequestDispatcher("index.jsp").forward(request, response);
+        
             break;
             
             default:

@@ -39,7 +39,7 @@ public class ListaEnlazada {
     }
         
         //Mostrar la lista
-        public Nodo Obtener_Lista(Nodo NLista){
+        public Nodo Obtener_Lista_D(Nodo NLista){
            
                 Actual=NLista;
                 if(Actual==null){
@@ -52,10 +52,44 @@ public class ListaEnlazada {
             return Actual;
         }
         
-        public Pelicula Recorrer_Lista(){
-            Actual=Obtener_Lista(Actual);
+        
+        public Pelicula Recorrer_Lista_D(){
+            Actual=Obtener_Lista_D(Actual);
             return Actual.Dato;
         }
+        //Mostrar la lista
+        public Nodo Obtener_Lista_I(Nodo NLista){
+           
+                Actual=NLista;
+                if(Actual==null){
+                Actual=Ultimo;
+                }else{
+                  Actual=Actual.anterior;
+                    
+                }
+               
+            return Actual;
+        }
+        
+        
+        public Pelicula Recorrer_Lista_I(){
+            Actual=Obtener_Lista_I(Actual);
+            return Actual.Dato;
+        }
+        
+        public void Recorrer(){
+            if(!Vacia()){
+                String s="<=>";
+                Actual=Primero;
+                while (Actual!=null) {                    
+                    s=s+"["+ Actual.Dato+"]<=>";
+                     System.out.println(s);
+                    Actual=Actual.siguiente;
+                   
+                }
+            }
+        }
+        
         
     
 }
