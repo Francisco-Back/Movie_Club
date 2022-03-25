@@ -51,6 +51,7 @@ public class ControlPrincipal extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     String accion=request.getParameter("accion");
@@ -64,11 +65,11 @@ public class ControlPrincipal extends HttpServlet {
                 FileItemFactory file =new  DiskFileItemFactory();
                
                 ServletFileUpload fileUpload=new ServletFileUpload(file);
-                System.out.println("Aqui muere le programa ");
+             
               List items=fileUpload.parseRequest(new ServletRequestContext(request));
-               System.out.println("Aqui muere le programa ya no ");
+              
                 for (int i = 0; i < items.size(); i++) {
-                     System.out.println("si ingreso for" +i);
+                    
                     FileItem fileItem= (FileItem)items.get(i);
                     
                     if(!fileItem.isFormField()){
@@ -95,6 +96,7 @@ public class ControlPrincipal extends HttpServlet {
             break;
         case "Index":
           Pelicula.Recorrer();
+          
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
            
             break;
@@ -154,4 +156,5 @@ public class ControlPrincipal extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+   
 }

@@ -50,7 +50,8 @@ Pelicula Carrosul=new  Pelicula();
         
               request.getRequestDispatcher("Login.jsp").forward(request, response);
               
-              Pelicula pelicula=new  Pelicula();
+            
+              
          
 
     }

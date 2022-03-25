@@ -28,13 +28,7 @@ public class Pelicula {
         this.Sinopsis = Sinopsis;
         this.Imagen = Imagen;
     }
-       public Pelicula(String NOriginal, String NPelicula, String Resena, String Sinopsis) {
-        this.NOriginal = NOriginal;
-        this.NPelicula = NPelicula;
-        this.Resena = Resena;
-        this.Sinopsis = Sinopsis;
-        this.Imagen = Imagen;
-    }
+
 
     public String getNOriginal() {
         return NOriginal;
