@@ -17,21 +17,22 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import ListaEnlazada.ListaEnlazada;
 import Modelo.Pelicula;
 
-/*
+///*
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-*/
-///*
+//*/
+/*
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//*/
+*/
 
 /**
  *
@@ -87,16 +88,28 @@ public class ControlPrincipal extends HttpServlet {
                     }
                 }
               Pelicula.AgregarPrimero(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
-
-   
+// se crea una varaible de Session para la informacion 
+           
+                 HttpSession session= request.getSession(true);
+              if(session.getAttribute("Session_Pelicula")!=null){
+               Pelicula=(new ListaEnlazada());
+               session.getAttribute("Session_Pelicula");
+              }
+              // se manda los mensajes de los atributos
+           session.setAttribute("Session_Pelicula", Pelicula);
+           request.setAttribute("stmensaje", "Carga Exitosa");
+           request.setAttribute("stipo", "success");
                   request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
                 
         } catch (Exception e) {
+            // se existe algun error
+             request.setAttribute("stmensaje", e.getMessage());
+           request.setAttribute("stipo", "Error");
+                  request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
         }
             break;
         case "Index":
           Pelicula.Recorrer();
-          
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
            
             break;
@@ -116,6 +129,7 @@ public class ControlPrincipal extends HttpServlet {
     public ListaEnlazada ListarP(){
         return Pelicula;
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

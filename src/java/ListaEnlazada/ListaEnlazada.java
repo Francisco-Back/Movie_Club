@@ -81,12 +81,15 @@ public class ListaEnlazada {
             if(!Vacia()){
                 String s="<=>";
                 Actual=Primero;
+                System.out.println("Metodo lista");
                 while (Actual!=null) {                    
                     s=s+"["+ Actual.Dato+"]<=>\n";
                      System.out.println(s);
                     Actual=Actual.siguiente;
                    
                 }
+            }else{
+                System.out.println("Lista Vacia");
             }
         }
         
