@@ -15,6 +15,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import java.util.ArrayList;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import ListaEnlazada.ListaEnlazada;
+import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
 
 ///*
@@ -42,6 +43,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
   ListaEnlazada Pelicula=new ListaEnlazada();
+
   String Movie;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -74,9 +76,9 @@ public class ControlPrincipal extends HttpServlet {
                     FileItem fileItem= (FileItem)items.get(i);
                     
                     if(!fileItem.isFormField()){
-                        File f=new File("C:\\Imagenes\\"+fileItem.getName());
+                        File f=new File("C:\\xampp\\htdocs\\img\\"+fileItem.getName());
                         fileItem.write(f);
-                      Movie=(f.getAbsolutePath());
+                      Movie=("http://localhost/img/"+fileItem.getName());
                         System.out.println("encontroimagen");
                     }else{
                         DT.add(fileItem.getString());
@@ -92,7 +94,8 @@ public class ControlPrincipal extends HttpServlet {
            
                  HttpSession session= request.getSession(true);
               if(session.getAttribute("Session_Pelicula")!=null){
-               Pelicula=(new ListaEnlazada());
+                  System.out.println("borra lista al ingresar aqui");
+              // Pelicula=(ListaEnlazada(Pelicula));
                session.getAttribute("Session_Pelicula");
               }
               // se manda los mensajes de los atributos
@@ -110,12 +113,15 @@ public class ControlPrincipal extends HttpServlet {
             break;
         case "Index":
           Pelicula.Recorrer();
+         
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
            
             break;
         case "Lista": 
-            request.setAttribute("Lista", ListarP());
-        
+            
+         request.setAttribute("Nodo", Pelicula.Recorrer_T());
+            
+          request.getRequestDispatcher("index.jsp").forward(request, response);
             break;
                 case "Regreso": 
            request.getRequestDispatcher("index.jsp").forward(request, response);

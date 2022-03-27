@@ -13,8 +13,11 @@ import Modelo.Pelicula;
  */
 public class ListaEnlazada {
     //Creamos la varriables de tipo Nodo
-    private Nodo Primero, Ultimo,Actual;
+    public Nodo Primero, Ultimo,Actual;
+    int cont=0;
     //iniciamos los metodos
+    
+    
     public ListaEnlazada(){
         Primero=Ultimo=null;
     }
@@ -27,71 +30,57 @@ public class ListaEnlazada {
          Ultimo.anterior.siguiente=Ultimo;
      } else{
          Primero=Ultimo=new Nodo(Dato);
+         
      }
     }
+
         public void AgregarPrimero(Pelicula Dato){
      if(!Vacia())  {
          Primero=new Nodo(Dato, Primero,null);
          Primero.siguiente.anterior=Primero;
+             cont++;
      } else{
          Primero=Ultimo=new Nodo(Dato);
+             cont++;
      }
     }
         
         //Mostrar la lista
-        public Nodo Obtener_Lista_D(Nodo NLista){
-           
-                Actual=NLista;
-                if(Actual==null){
-                Actual=Primero;
-                }else{
-                  Actual=Actual.siguiente;
-                    
-                }
-               
-            return Actual;
-        }
-        
-        
-        public Pelicula Recorrer_Lista_D(){
-            Actual=Obtener_Lista_D(Actual);
-            return Actual.Dato;
-        }
-        //Mostrar la lista
-        public Nodo Obtener_Lista_I(Nodo NLista){
-           
-                Actual=NLista;
-                if(Actual==null){
-                Actual=Ultimo;
-                }else{
-                  Actual=Actual.anterior;
-                    
-                }
-               
-            return Actual;
-        }
-        
-        
-        public Pelicula Recorrer_Lista_I(){
-            Actual=Obtener_Lista_I(Actual);
-            return Actual.Dato;
-        }
         
         public void Recorrer(){
             if(!Vacia()){
                 String s="<=>";
                 Actual=Primero;
-                System.out.println("Metodo lista");
+                System.out.println("Metodo lista Recorrer");
                 while (Actual!=null) {                    
                     s=s+"["+ Actual.Dato+"]<=>\n";
-                     System.out.println(s);
+                    
                     Actual=Actual.siguiente;
                    
                 }
+                 System.out.println(s);
             }else{
                 System.out.println("Lista Vacia");
             }
         }
+        
+           public Pelicula Recorrer_T(){
+            if(!Vacia()){
+                Actual=Primero;
+                return Actual.Dato;
+                
+            }
+            if(Actual!=null){
+                   Actual=Actual.siguiente;
+                
+            return Actual.Dato;
+                
+                }else{
+                return null;
+            }
+        }
+
+   
         
         
     

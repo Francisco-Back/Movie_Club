@@ -25,8 +25,7 @@ public class Nodo {
         siguiente = D;
         anterior = I;
     }
- 
-      
+
 
 
 
