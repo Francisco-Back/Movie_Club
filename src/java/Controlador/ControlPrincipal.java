@@ -146,8 +146,26 @@ public class ControlPrincipal extends HttpServlet {
         
             break;
         case "ListaP":
-             System.out.println("si ingreso");
-               request.getRequestDispatcher("index.jsp").forward(request, response);
+               System.out.println("Ingreso a Lista 2" );
+
+            if(session.getAttribute("Session_Pelicula")!=null){
+                
+                System.out.println("Primero nodo   "+Pelicula.Ultimo);
+                Aux=Pelicula.Ultimo;
+                System.out.println("nodo antes de ingresar"+Aux.toString());
+                mv=Pelicula.NuevoRecorrido_I(Aux);
+                System.out.println(mv.toString());
+                
+              //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
+                 request.setAttribute("Nodo",mv);
+                 request.setAttribute("Nodo_Actual", Aux);
+                
+                
+            }else{
+                request.setAttribute("Nodo",mv);
+                System.out.println("fallo");
+            }
+             request.getRequestDispatcher("index.jsp").forward(request, response);
             break;
             
                 case "Regreso":
