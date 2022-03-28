@@ -145,8 +145,9 @@ public class ControlPrincipal extends HttpServlet {
              request.getRequestDispatcher("index.jsp").forward(request, response);
         
             break;
-        case "listaP":
+        case "ListaP":
              System.out.println("si ingreso");
+               request.getRequestDispatcher("index.jsp").forward(request, response);
             break;
             
                 case "Regreso":

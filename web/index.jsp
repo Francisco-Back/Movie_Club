@@ -124,18 +124,21 @@
                     <a href="Gen_Pag.jsp" > <img src="<%=Imagen%>" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" ><rect width="100%" height="100%" fill="#777" />
                     </a>
                 </div>
-                 <form action="ControlPrincipal?accion=ListaP" method="post">
-                <button class="carousel-control-prev" type="submit"  >
-                    <span class="carousel-control-prev-icon" ></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                    </form>  
-                 <form action="ControlPrincipal?accion=Lista" method="post">
-                <button class="carousel-control-next" type="submit" >
+                    <div>
+                        
+                    </div>
+                
+                 <form action="ControlPrincipal" method="post">
+                <button class="carousel-control-next" type="submit" value="Lista" name="accion" >
                     <span class="carousel-control-next-icon" ></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-                </form>
+              
+                <button class="carousel-control-prev" type="submit" value="ListaP" name="accion" >
+                    <span class="carousel-control-prev-icon" ></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                    </form> 
                 <%
                   }  
                 %>
