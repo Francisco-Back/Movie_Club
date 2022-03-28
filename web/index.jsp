@@ -96,11 +96,11 @@
                 <div class="carousel-item active" >
 
                     <%
-                        
-         Pelicula Vpelicula=new Pelicula();
+                         String Imagen=""; 
+         
            Pelicula Vpeliculas=new Pelicula();
                         //se crea una variable de tipo listaEnlada que recibe mi lista de ingreso datos en variable de session
-                        ListaEnlazada Vista=new ListaEnlazada();
+                      /*  ListaEnlazada Vista=new ListaEnlazada();
                         if(session.getAttribute("Session_Pelicula")!=null){
                             //asignamos el valor y le decimos de que tipo es
                             Vista=(ListaEnlazada)session.getAttribute("Session_Pelicula");
@@ -108,22 +108,17 @@
                         if(Vista!=null){
                             System.out.println("Lista de main index");
                          Vista.Recorrer();
-                         Vpelicula=Vista.Recorrer_T();
                       
-                        }
+                        }*/
                           if(request.getAttribute("Nodo")!=null){
                               
-                            System.out.println("Si regresa nodo"+request.getAttribute("Nodo"));
-                            Vpeliculas=(Pelicula)request.getAttribute("Nodo");
-                        }
-                      
-           
-                        if(Vpelicula!=null){
-                            System.out.println("Ingreso nuevorecor");
-                            System.out.println(Vpelicula.toString());
-                          System.out.println(Vpelicula.getImagen());
-                      String Imagen=Vpelicula.getImagen();
-                     
+                            System.out.println("Si regresa nodo" + request.getAttribute("Nodo"));
+                           Vpeliculas=(Pelicula)request.getAttribute("Nodo");
+                            System.out.println(Vpeliculas.getImagen());
+                            System.out.println("Si funciona");
+                            Imagen =Vpeliculas.getImagen();
+                          
+                   
                     %>
                     <!-- Carga la Imagen -->
                     <a href="Gen_Pag.jsp" > <img src="<%=Imagen%>" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" ><rect width="100%" height="100%" fill="#777" />

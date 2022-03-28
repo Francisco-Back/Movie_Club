@@ -43,6 +43,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
   ListaEnlazada Pelicula=new ListaEnlazada();
+  Pelicula mv=new Pelicula();
 
   String Movie;
     /**
@@ -118,12 +119,14 @@ public class ControlPrincipal extends HttpServlet {
            
             break;
         case "Lista": 
-            
+            System.out.println("Ingreso a Lista");
          request.setAttribute("Nodo", Pelicula.Recorrer_T());
-            
+             request.setAttribute("Ubicacion", Pelicula.Actual);
+             System.out.println("Nodo actual"+Pelicula.Actual.toString());
           request.getRequestDispatcher("index.jsp").forward(request, response);
             break;
-                case "Regreso": 
+                case "Regreso":
+                      request.setAttribute("Nodo", Pelicula.Recorrer_T());
            request.getRequestDispatcher("index.jsp").forward(request, response);
         
             break;

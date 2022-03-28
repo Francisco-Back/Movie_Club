@@ -7,6 +7,7 @@ package ListaEnlazada;
 import Modelo.Pelicula;
 
 
+
 /**
  *
  * @author Francisco Back
@@ -64,20 +65,25 @@ public class ListaEnlazada {
             }
         }
         
-           public Pelicula Recorrer_T(){
+           public Pelicula Recorrer_T(){  
             if(!Vacia()){
-                Actual=Primero;
-                return Actual.Dato;
+                System.out.println("Ingreso primer dato");
+                Actual=Ultimo;
+                 
+                return Actual.Dato; 
                 
             }
             if(Actual!=null){
-                   Actual=Actual.siguiente;
+                System.out.println("Ingresa al cuando ya hay datos ");
+                   Actual=Actual.anterior;
+                   System.out.println("Nodo R"+Actual.Dato);
                 
             return Actual.Dato;
                 
                 }else{
                 return null;
             }
+            
         }
 
    
