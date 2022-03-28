@@ -96,22 +96,22 @@
                 <div class="carousel-item active" >
 
                     <%
-                         String Imagen=""; 
+                         String Imagen="t"; 
          
            Pelicula Vpeliculas=new Pelicula();
+           
                         //se crea una variable de tipo listaEnlada que recibe mi lista de ingreso datos en variable de session
-                      /*  ListaEnlazada Vista=new ListaEnlazada();
+                   /*   ListaEnlazada Vista=new ListaEnlazada();
                         if(session.getAttribute("Session_Pelicula")!=null){
                             //asignamos el valor y le decimos de que tipo es
                             Vista=(ListaEnlazada)session.getAttribute("Session_Pelicula");
                         }
                         if(Vista!=null){
                             System.out.println("Lista de main index");
-                         Vista.Recorrer();
+                         System.out.println(Vista.Recorrer_T());
                       
                         }*/
-                          if(request.getAttribute("Nodo")!=null){
-                              
+                          if(request.getAttribute("Nodo")!=null){  
                             System.out.println("Si regresa nodo" + request.getAttribute("Nodo"));
                            Vpeliculas=(Pelicula)request.getAttribute("Nodo");
                             System.out.println(Vpeliculas.getImagen());
@@ -124,7 +124,7 @@
                     <a href="Gen_Pag.jsp" > <img src="<%=Imagen%>" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" ><rect width="100%" height="100%" fill="#777" />
                     </a>
                 </div>
-                 <form action="ControlPrincipal?accion=Lista" method="post">
+                 <form action="ControlPrincipal?accion=ListaP" method="post">
                 <button class="carousel-control-prev" type="submit"  >
                     <span class="carousel-control-prev-icon" ></span>
                     <span class="visually-hidden">Previous</span>

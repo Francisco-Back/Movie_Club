@@ -5,6 +5,7 @@
 package ListaEnlazada;
 
 import Modelo.Pelicula;
+import sun.net.www.content.text.plain;
 
 
 
@@ -68,7 +69,7 @@ public class ListaEnlazada {
            public Pelicula Recorrer_T(){  
             if(!Vacia()){
                 System.out.println("Ingreso primer dato");
-                Actual=Ultimo;
+                Actual=Primero;
                  
                 return Actual.Dato; 
                 
@@ -85,9 +86,18 @@ public class ListaEnlazada {
             }
             
         }
-
-   
-        
+           
+           
+           public Pelicula NuevoRecorrido_D(Nodo tr){
+              Actual=tr.siguiente;
+           return Actual.Dato;
+               
+           }
+                public Pelicula NuevoRecorrido_I(Nodo tr){
+              Actual=tr.anterior;
+           return Actual.Dato;
+               
+           }
         
     
 }

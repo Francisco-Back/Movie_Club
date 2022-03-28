@@ -18,22 +18,22 @@ import ListaEnlazada.ListaEnlazada;
 import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
 
-///*
+/*
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-//*/
-/*
+*/
+///*
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-*/
+import javax.servlet.http.HttpSession;
+//*/
 
 /**
  *
@@ -43,9 +43,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
   ListaEnlazada Pelicula=new ListaEnlazada();
+ Nodo Aux=null;
   Pelicula mv=new Pelicula();
 
   String Movie;
+  
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,7 +60,9 @@ public class ControlPrincipal extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session= request.getSession(true);
     String accion=request.getParameter("accion");
+        System.out.println(accion);
     switch(accion){
         case "Garchivo":
          
@@ -93,7 +97,7 @@ public class ControlPrincipal extends HttpServlet {
               Pelicula.AgregarPrimero(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
 // se crea una varaible de Session para la informacion 
            
-                 HttpSession session= request.getSession(true);
+                 
               if(session.getAttribute("Session_Pelicula")!=null){
                   System.out.println("borra lista al ingresar aqui");
               // Pelicula=(ListaEnlazada(Pelicula));
@@ -114,17 +118,37 @@ public class ControlPrincipal extends HttpServlet {
             break;
         case "Index":
           Pelicula.Recorrer();
-         
             request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
            
             break;
         case "Lista": 
-            System.out.println("Ingreso a Lista");
-         request.setAttribute("Nodo", Pelicula.Recorrer_T());
-             request.setAttribute("Ubicacion", Pelicula.Actual);
-             System.out.println("Nodo actual"+Pelicula.Actual.toString());
-          request.getRequestDispatcher("index.jsp").forward(request, response);
+
+               System.out.println("Ingreso a Lista 1" );
+
+            if(session.getAttribute("Session_Pelicula")!=null){
+                
+                System.out.println("Primero nodo   "+Pelicula.Primero);
+                Aux=Pelicula.Primero;
+                System.out.println("nodo antes de ingresar"+Aux.toString());
+                mv=Pelicula.NuevoRecorrido_D(Aux);
+                System.out.println(mv.toString());
+                
+              //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
+                 request.setAttribute("Nodo",mv);
+                 request.setAttribute("Nodo_Actual", Aux);
+                
+                
+            }else{
+                request.setAttribute("Nodo",mv);
+                System.out.println("fallo");
+            }
+             request.getRequestDispatcher("index.jsp").forward(request, response);
+        
             break;
+        case "listaP":
+             System.out.println("si ingreso");
+            break;
+            
                 case "Regreso":
                       request.setAttribute("Nodo", Pelicula.Recorrer_T());
            request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -133,8 +157,10 @@ public class ControlPrincipal extends HttpServlet {
             
             default:
                 throw new AssertionError();
+          
     }
     }
+    
     public ListaEnlazada ListarP(){
         return Pelicula;
     }
