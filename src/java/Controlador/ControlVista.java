@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controlador;
-import ListaEnlazada.ListaEnlazada;
+import ListaEnlazada.ListaEnlazadaC;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControlVista", urlPatterns = {"/ControlVista"})
 public class ControlVista extends HttpServlet {
-ListaEnlazada Carrosul=new  ListaEnlazada();
+ListaEnlazadaC Carrosul=new  ListaEnlazadaC();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

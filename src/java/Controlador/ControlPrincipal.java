@@ -14,7 +14,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import java.util.ArrayList;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
-import ListaEnlazada.ListaEnlazada;
+import ListaEnlazada.ListaEnlazadaC;
 import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
 
@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
-  ListaEnlazada Pelicula=new ListaEnlazada();
+  ListaEnlazadaC Pelicula=new ListaEnlazadaC();
  Nodo Aux=null;
   Pelicula mv=new Pelicula();
 
@@ -86,7 +86,7 @@ public class ControlPrincipal extends HttpServlet {
                         break;
                     }
                 }
-              Pelicula.AgregarPrimero(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
+              Pelicula.Ingresar(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
 // se crea una varaible de Session para la informacion 
            
                  
@@ -118,12 +118,7 @@ public class ControlPrincipal extends HttpServlet {
                System.out.println("Ingreso a Lista 1" );
 
             if(session.getAttribute("Session_Pelicula")!=null){
-                
-                System.out.println("Primero nodo   "+Pelicula.Primero);
-                Aux=Pelicula.Primero;
-                System.out.println("nodo antes de ingresar"+Aux.toString());
-                mv=Pelicula.NuevoRecorrido_D(Aux);
-                System.out.println(mv.toString());
+    
                 
               //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
                  request.setAttribute("Nodo",mv);
@@ -142,11 +137,7 @@ public class ControlPrincipal extends HttpServlet {
 
             if(session.getAttribute("Session_Pelicula")!=null){
                 
-                System.out.println("Primero nodo   "+Pelicula.Ultimo);
-                Aux=Pelicula.Ultimo;
-                System.out.println("nodo antes de ingresar"+Aux.toString());
-                mv=Pelicula.NuevoRecorrido_I(Aux);
-                System.out.println(mv.toString());
+                
                 
               //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
                  request.setAttribute("Nodo",mv);
@@ -172,9 +163,7 @@ public class ControlPrincipal extends HttpServlet {
     }
     }
     
-    public ListaEnlazada ListarP(){
-        return Pelicula;
-    }
+  
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
