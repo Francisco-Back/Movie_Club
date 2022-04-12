@@ -54,4 +54,8 @@ public class ListaEnlazadaC {
      
   }
     
+    public void EliminarNodo(){
+        
+    }
+    
 }
