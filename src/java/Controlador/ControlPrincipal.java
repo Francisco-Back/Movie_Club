@@ -163,6 +163,7 @@ public class ControlPrincipal extends HttpServlet {
                         InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
                         BufferedReader Datlee=new BufferedReader(DatEn);
                         System.out.println(Datlee.readLine());
+                        
                     }else{
                         System.out.println("Conexion No realizada");
                     }

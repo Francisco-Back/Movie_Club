@@ -4,6 +4,7 @@
  */
 package ListaEnlazada;
 
+import ApiPeliculas.ApiCartelera;
 import Modelo.Pelicula;
 import sun.net.www.content.text.plain;
 
@@ -25,7 +26,7 @@ public class ListaEnlazadaC {
       return ultimo==null;
   }
   //metodo insertar
-  public ListaEnlazadaC Ingresar(Pelicula Dato){
+  public ListaEnlazadaC Ingresar(ApiCartelera Dato){
       Nodo Nuevo=new Nodo(Dato);
        if(ultimo!=null){
            Nuevo.siguiente=ultimo.siguiente;
