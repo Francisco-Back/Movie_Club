@@ -3,13 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controlador;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import java.util.ArrayList;
@@ -17,29 +16,30 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import ListaEnlazada.ListaEnlazadaC;
 import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 
 /**
  *
  * @author Francisco Back
  */
-
 @WebServlet(name = "ControlPrincipal", urlPatterns = {"/ControlPrincipal"})
 public class ControlPrincipal extends HttpServlet {
-  ListaEnlazadaC Pelicula=new ListaEnlazadaC();
- Nodo Aux=null;
-  Pelicula mv=new Pelicula();
 
-  String Movie;
-  
+    ListaEnlazadaC Pelicula = new ListaEnlazadaC();
+    Nodo Aux = null;
+    Pelicula mv = new Pelicula();
+
+    String Movie;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,122 +49,134 @@ public class ControlPrincipal extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session= request.getSession(true);
-    String accion=request.getParameter("accion");
+        HttpSession session = request.getSession(true);
+        String accion = request.getParameter("accion");
         System.out.println(accion);
-    switch(accion){
-        case "Garchivo":
+        switch (accion) {
+            case "Garchivo":
          
             //Metodo que Crea la ruta del archivo
             try {
-                ArrayList <String> DT=new ArrayList<>();
-                
-                FileItemFactory file =new  DiskFileItemFactory();
-               
-                ServletFileUpload fileUpload=new ServletFileUpload(file);
-             
-              List items=fileUpload.parseRequest(new ServletRequestContext(request));
-              
+                ArrayList<String> DT = new ArrayList<>();
+
+                FileItemFactory file = new DiskFileItemFactory();
+
+                ServletFileUpload fileUpload = new ServletFileUpload(file);
+
+                List items = fileUpload.parseRequest(new ServletRequestContext(request));
+
                 for (int i = 0; i < items.size(); i++) {
-                    
-                    FileItem fileItem= (FileItem)items.get(i);
-                    
-                    if(!fileItem.isFormField()){
-                        File f=new File("C:\\xampp\\htdocs\\img\\"+fileItem.getName());
+
+                    FileItem fileItem = (FileItem) items.get(i);
+
+                    if (!fileItem.isFormField()) {
+                        File f = new File("C:\\xampp\\htdocs\\img\\" + fileItem.getName());
                         fileItem.write(f);
-                      Movie=("http://localhost/img/"+fileItem.getName());
+                        Movie = ("http://localhost/img/" + fileItem.getName());
                         System.out.println("encontroimagen");
-                    }else{
+                    } else {
                         DT.add(fileItem.getString());
                         System.out.println(fileItem.getString());
-                       
+
                     }
-                    if(i==5){
+                    if (i == 5) {
                         break;
                     }
                 }
-              Pelicula.Ingresar(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3),Movie));
+                Pelicula.Ingresar(new Pelicula(DT.get(0), DT.get(1), DT.get(2), DT.get(3), Movie));
 // se crea una varaible de Session para la informacion 
-           
-                 
-              if(session.getAttribute("Session_Pelicula")!=null){
-                  System.out.println("borra lista al ingresar aqui");
-              // Pelicula=(ListaEnlazada(Pelicula));
-               session.getAttribute("Session_Pelicula");
-              }
-              // se manda los mensajes de los atributos
-           session.setAttribute("Session_Pelicula", Pelicula);
-           request.setAttribute("stmensaje", "Carga Exitosa");
-           request.setAttribute("stipo", "success");
-                  request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
-                
-        } catch (Exception e) {
-            // se existe algun error
-             request.setAttribute("stmensaje", e.getMessage());
-           request.setAttribute("stipo", "Error");
-                  request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
-        }
-            break;
-        case "Index":
-          Pelicula.Recorrer();
-            request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
-           
-            break;
-        case "Lista": 
 
-               System.out.println("Ingreso a Lista 1" );
+                if (session.getAttribute("Session_Pelicula") != null) {
+                    System.out.println("borra lista al ingresar aqui");
+                    // Pelicula=(ListaEnlazada(Pelicula));
+                    session.getAttribute("Session_Pelicula");
+                }
+                // se manda los mensajes de los atributos
+                session.setAttribute("Session_Pelicula", Pelicula);
+                request.setAttribute("stmensaje", "Carga Exitosa");
+                request.setAttribute("stipo", "success");
+                request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
 
-            if(session.getAttribute("Session_Pelicula")!=null){
-    
-                
-              //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
-                 request.setAttribute("Nodo",mv);
-                 request.setAttribute("Nodo_Actual", Aux);
-                
-                
-            }else{
-                request.setAttribute("Nodo",mv);
-                System.out.println("fallo");
+            } catch (Exception e) {
+                // se existe algun error
+                request.setAttribute("stmensaje", e.getMessage());
+                request.setAttribute("stipo", "Error");
+                request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
             }
-             request.getRequestDispatcher("index.jsp").forward(request, response);
-        
             break;
-        case "ListaP":
-               System.out.println("Ingreso a Lista 2" );
+            case "Index":
+                Pelicula.Recorrer();
+                request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
 
-            if(session.getAttribute("Session_Pelicula")!=null){
-                
-                
-                
-              //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
-                 request.setAttribute("Nodo",mv);
-                 request.setAttribute("Nodo_Actual", Aux);
-                
-                
-            }else{
-                request.setAttribute("Nodo",mv);
-                System.out.println("fallo");
-            }
-             request.getRequestDispatcher("index.jsp").forward(request, response);
-            break;
-            
-                case "Regreso":
-                      request.setAttribute("Nodo", Pelicula.Recorrer_T());
-           request.getRequestDispatcher("index.jsp").forward(request, response);
-        
-            break;
-            
+                break;
+            case "Lista":
+
+                System.out.println("Ingreso a Lista 1");
+
+                if (session.getAttribute("Session_Pelicula") != null) {
+
+                    //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
+                    request.setAttribute("Nodo", mv);
+                    request.setAttribute("Nodo_Actual", Aux);
+
+                } else {
+                    request.setAttribute("Nodo", mv);
+                    System.out.println("fallo");
+                }
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+
+                break;
+            case "ListaP":
+                System.out.println("Ingreso a Lista 2");
+
+                if (session.getAttribute("Session_Pelicula") != null) {
+
+                    //  request.setAttribute("Nodo", Pelicula.NuevoRecorrido_D(Pelicula.Actual));
+                    request.setAttribute("Nodo", mv);
+                    request.setAttribute("Nodo_Actual", Aux);
+
+                } else {
+                    request.setAttribute("Nodo", mv);
+                    System.out.println("fallo");
+                }
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
+
+            case "Regreso":
+                request.setAttribute("Nodo", Pelicula.Recorrer_T());
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+
+                break;
+
+            case "ApiCartelera":
+                String ApiCartelera = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+                 try {
+                    URL url=new URL(ApiCartelera);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
+                break;
+
+            case "ApiPopulares":
+                String ApiPopulares = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+
+                break;
+            case "ApiArtistas":
+                String ApiArtistas = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+
+                break;
+
             default:
                 throw new AssertionError();
-          
-    }
-    }
-    
-  
 
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -205,5 +217,4 @@ public class ControlPrincipal extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-   
 }
