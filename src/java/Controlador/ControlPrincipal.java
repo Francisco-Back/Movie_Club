@@ -16,6 +16,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import ListaEnlazada.ListaEnlazadaC;
 import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
+import java.io.BufferedReader;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -157,6 +158,13 @@ public class ControlPrincipal extends HttpServlet {
                     HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
                     apiC.setRequestMethod("GET");
                     apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                        System.out.println(Datlee.readLine());
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
                     apiC.disconnect();
                 } catch (Exception e) {
                      System.out.println(e);

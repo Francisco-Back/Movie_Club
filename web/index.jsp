@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="ListaEnlazada.ListaEnlazada" %>
+<%@page import="ListaEnlazada.ListaEnlazadaC" %>
 <%@page import="Modelo.Pelicula" %>
 
 <!DOCTYPE html>
@@ -156,6 +156,7 @@
 
 
         <div class="container marketing">
+            
 
         </div><!-- /.container -->
 
