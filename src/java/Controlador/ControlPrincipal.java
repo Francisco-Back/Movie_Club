@@ -56,7 +56,8 @@ public class ControlPrincipal extends HttpServlet {
         String accion = request.getParameter("accion");
         System.out.println(accion);
         switch (accion) {
-            case "Garchivo":
+            //funcion Correcta solo Para Ingreso manual de Datos
+            /*case "Garchivo":
          
             //Metodo que Crea la ruta del archivo
             try {
@@ -106,7 +107,7 @@ public class ControlPrincipal extends HttpServlet {
                 request.setAttribute("stipo", "Error");
                 request.getRequestDispatcher("ControlPrincipal?accion=Index").forward(request, response);
             }
-            break;
+            break;*/
             case "Index":
                 Pelicula.Recorrer();
                 request.getRequestDispatcher("IngresoDatos.jsp").forward(request, response);
@@ -172,11 +173,43 @@ public class ControlPrincipal extends HttpServlet {
                 break;
 
             case "ApiPopulares":
-                String ApiPopulares = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+                String ApiPopulares = "http://api.themoviedb.org/3/movie/popular?api_key=3279286a0b6c539866973dfa2740eeec";
+                try {
+                    URL url=new URL(ApiPopulares);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                        System.out.println(Datlee.readLine());
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
 
                 break;
             case "ApiArtistas":
                 String ApiArtistas = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+                try {
+                    URL url=new URL(ApiArtistas);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                        System.out.println(Datlee.readLine());
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
 
                 break;
 

@@ -4,6 +4,7 @@
  */
 package ListaEnlazada;
 
+import ApiPeliculas.ApiCartelera;
 import Modelo.Pelicula;
 
 /**
@@ -12,12 +13,12 @@ import Modelo.Pelicula;
  */
 public class Nodo {
     // se crea los parametros para el nodo
-Pelicula Dato;
+ApiCartelera Dato;
 Nodo siguiente;
 
 
 //se crea el constructor del nodo
-public Nodo(Pelicula dato){
+public Nodo(ApiCartelera dato){
      Dato=dato;
      siguiente=this;
 }

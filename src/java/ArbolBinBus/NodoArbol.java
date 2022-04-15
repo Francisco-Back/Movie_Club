@@ -4,10 +4,13 @@
  */
 package ArbolBinBus;
 
+import ApiPeliculas.ApiArtistas;
+
 /**
  *
  * @author franciscoback
  */
 public class NodoArbol {
+    ApiArtistas DaArtista;
     
 }

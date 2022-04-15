@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import ApiPeliculas.ApiCartelera;
+
 /**
  *
  * @author Francisco Back
@@ -15,6 +17,7 @@ public class Pelicula {
    public String Resena;
    public String Sinopsis;
    public String Imagen;
+   ApiCartelera Cartelera;
    
    
    public Pelicula(){

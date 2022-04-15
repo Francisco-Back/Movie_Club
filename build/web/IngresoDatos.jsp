@@ -73,6 +73,10 @@
        <form class="col-md-6"  action="ControlPrincipal?accion=ApiCartelera" method="POST">
                     <button  class="btn btn-outline-primary"  type="submit" value="Login" name="Inicio">ApiCartelera</button>
                 </form>
+    <form class="col-md-6"  action="ControlPrincipal?accion=ApiPopulares" method="POST">
+                    <button  class="btn btn-outline-primary"  type="submit" value="Login" name="Inicio">ApiPopular</button>
+                </form>
+    
     <div class="  container mt-4  ">
         <div class="form-group">
             <%-- Formulario manda datos a controlprincipal y enctype imagenes--%>

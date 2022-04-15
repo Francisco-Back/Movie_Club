@@ -27,6 +27,7 @@ public class ApiCartelera {
   private boolean video;
   private float vote_average;
   private float vote_count;
+  
 
 
  // Getter Methods 
