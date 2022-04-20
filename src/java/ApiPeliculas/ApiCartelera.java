@@ -5,7 +5,6 @@
 package ApiPeliculas;
 
 import ArbolBinBus.ArbolBinBus;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +15,6 @@ public class ApiCartelera {
    
   private boolean adult;
   private String backdrop_path;
-  ArrayList<Object> genre_ids = new ArrayList<Object>();
   private float id;
   private String original_language;
   private String original_title;
@@ -28,13 +26,12 @@ public class ApiCartelera {
   private boolean video;
   private float vote_average;
   private float vote_count;
-  ArbolBinBus ArbolB;
 //constructor Vacio
    public ApiCartelera(){
        
    }
    
-    public ApiCartelera(float id, String original_language, String original_title, String overview, float popularity, String poster_path, String release_date, String title, boolean video, float vote_average, float vote_count, ArbolBinBus ArbolB) {
+    public ApiCartelera(float id, String original_language, String original_title, String overview, float popularity, String poster_path, String release_date, String title, boolean video, float vote_average, float vote_count) {
         this.id = id;
         this.original_language = original_language;
         this.original_title = original_title;
@@ -46,7 +43,6 @@ public class ApiCartelera {
         this.video = video;
         this.vote_average = vote_average;
         this.vote_count = vote_count;
-        this.ArbolB = ArbolB;
     }
   
   

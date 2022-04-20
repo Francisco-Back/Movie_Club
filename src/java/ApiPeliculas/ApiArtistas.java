@@ -22,6 +22,24 @@ public class ApiArtistas {
   private String credit_id;
   private float order;
 
+    public ApiArtistas() {
+    }
+
+    public ApiArtistas(boolean adult, float gender, float id, String known_for_department, String name, String original_name, float popularity, String profile_path, float cast_id, String character, String credit_id, float order) {
+        this.adult = adult;
+        this.gender = gender;
+        this.id = id;
+        this.known_for_department = known_for_department;
+        this.name = name;
+        this.original_name = original_name;
+        this.popularity = popularity;
+        this.profile_path = profile_path;
+        this.cast_id = cast_id;
+        this.character = character;
+        this.credit_id = credit_id;
+        this.order = order;
+    }
+
 
  // Getter Methods 
 

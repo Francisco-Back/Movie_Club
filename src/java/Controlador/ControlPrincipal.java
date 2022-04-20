@@ -4,18 +4,14 @@
  */
 package Controlador;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileItemFactory;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import java.util.ArrayList;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
+
 import ListaEnlazada.ListaEnlazadaC;
 import ListaEnlazada.Nodo;
 import Modelo.Pelicula;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 import java.io.BufferedReader;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
+
 import java.net.URL;
 
 /**
@@ -153,64 +149,20 @@ public class ControlPrincipal extends HttpServlet {
                 break;
 
             case "ApiCartelera":
-                String ApiCartelera = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
-                 try {
-                    URL url=new URL(ApiCartelera);
-                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
-                    apiC.setRequestMethod("GET");
-                    apiC.setRequestProperty("Accept", "application/json");
-                    if(apiC.getResponseCode()==200){
-                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
-                        BufferedReader Datlee=new BufferedReader(DatEn);
-                        System.out.println(Datlee.readLine());
-                        
-                    }else{
-                        System.out.println("Conexion No realizada");
-                    }
-                    apiC.disconnect();
-                } catch (Exception e) {
-                     System.out.println(e);
-                }
+            
+                  ApiCartelera();
+                
+                
+                
                 break;
 
             case "ApiPopulares":
-                String ApiPopulares = "http://api.themoviedb.org/3/movie/popular?api_key=3279286a0b6c539866973dfa2740eeec";
-                try {
-                    URL url=new URL(ApiPopulares);
-                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
-                    apiC.setRequestMethod("GET");
-                    apiC.setRequestProperty("Accept", "application/json");
-                    if(apiC.getResponseCode()==200){
-                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
-                        BufferedReader Datlee=new BufferedReader(DatEn);
-                        System.out.println(Datlee.readLine());
-                    }else{
-                        System.out.println("Conexion No realizada");
-                    }
-                    apiC.disconnect();
-                } catch (Exception e) {
-                     System.out.println(e);
-                }
+               ApiPopulares();
 
                 break;
             case "ApiArtistas":
-                String ApiArtistas = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
-                try {
-                    URL url=new URL(ApiArtistas);
-                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
-                    apiC.setRequestMethod("GET");
-                    apiC.setRequestProperty("Accept", "application/json");
-                    if(apiC.getResponseCode()==200){
-                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
-                        BufferedReader Datlee=new BufferedReader(DatEn);
-                        System.out.println(Datlee.readLine());
-                    }else{
-                        System.out.println("Conexion No realizada");
-                    }
-                    apiC.disconnect();
-                } catch (Exception e) {
-                     System.out.println(e);
-                }
+                ApiArtistas("500");
+                
 
                 break;
 
@@ -219,7 +171,72 @@ public class ControlPrincipal extends HttpServlet {
 
         }
     }
+    
+public  String ApiCartelera(){
+    String ApiCarteleraS = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
+    String ApiCarteleraDat="";
+                 try {
+                    URL url=new URL(ApiCarteleraS);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                        ApiCarteleraDat=Datlee.readLine();
+                        
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
+        return ApiCarteleraDat;
+}
+public String ApiPopulares(){
+     String ApiPopulares = "http://api.themoviedb.org/3/movie/popular?api_key=3279286a0b6c539866973dfa2740eeec";
+     String ApiPopularesDat="";
+                try {
+                    URL url=new URL(ApiPopulares);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                    ApiPopularesDat=Datlee.readLine();
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
+                return ApiPopularesDat;
+}
 
+public String ApiArtistas(String IDP){
+    String ApiArtistasDat="";
+                String ApiArtistas = "http://api.themoviedb.org/3/movie/"+IDP+"/credits?api_key=3279286a0b6c539866973dfa2740eeec";
+                try {
+                    URL url=new URL(ApiArtistas);
+                    HttpURLConnection apiC=(HttpURLConnection)url.openConnection();
+                    apiC.setRequestMethod("GET");
+                    apiC.setRequestProperty("Accept", "application/json");
+                    if(apiC.getResponseCode()==200){
+                        InputStreamReader DatEn=new InputStreamReader(apiC.getInputStream());
+                        BufferedReader Datlee=new BufferedReader(DatEn);
+                     ApiArtistasDat=Datlee.readLine();
+                    }else{
+                        System.out.println("Conexion No realizada");
+                    }
+                    apiC.disconnect();
+                } catch (Exception e) {
+                     System.out.println(e);
+                }
+    return ApiArtistasDat;
+}
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

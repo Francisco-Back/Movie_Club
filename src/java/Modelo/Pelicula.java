@@ -5,6 +5,7 @@
 package Modelo;
 
 import ApiPeliculas.ApiCartelera;
+import ArbolBinBus.ArbolBinBus;
 
 /**
  *
@@ -12,74 +13,36 @@ import ApiPeliculas.ApiCartelera;
  */
 public class Pelicula {
 
-   public String NOriginal;
-   public String NPelicula;
-   public String Resena;
-   public String Sinopsis;
-   public String Imagen;
+ ApiCartelera Pelicula;
+ ArbolBinBus ArbolB;
 
-   
-   
-   public Pelicula(){
-       
-   }
-
-    public Pelicula(String NOriginal, String NPelicula, String Resena, String Sinopsis, String Imagen) {
-        this.NOriginal = NOriginal;
-        this.NPelicula = NPelicula;
-        this.Resena = Resena;
-        this.Sinopsis = Sinopsis;
-        this.Imagen = Imagen;
+    public Pelicula() {
     }
 
-
-    public String getNOriginal() {
-        return NOriginal;
+    public Pelicula(ApiCartelera Pelicula, ArbolBinBus ArbolB) {
+        this.Pelicula = Pelicula;
+        this.ArbolB = ArbolB;
     }
 
-    public void setNOriginal(String NOriginal) {
-        this.NOriginal = NOriginal;
+    public ApiCartelera getPelicula() {
+        return Pelicula;
     }
 
-    public String getNPelicula() {
-        return NPelicula;
+    public void setPelicula(ApiCartelera Pelicula) {
+        this.Pelicula = Pelicula;
     }
 
-    public void setNPelicula(String NPelicula) {
-        this.NPelicula = NPelicula;
+    public ArbolBinBus getArbolB() {
+        return ArbolB;
     }
 
-    public String getResena() {
-        return Resena;
-    }
-
-    public void setResena(String Resena) {
-        this.Resena = Resena;
-    }
-
-    public String getSinopsis() {
-        return Sinopsis;
-    }
-
-    public void setSinopsis(String Sinopsis) {
-        this.Sinopsis = Sinopsis;
-    }
-
-    public String getImagen() {
-        return Imagen;
-    }
-
-    public void setImagen(String Imagen) {
-        this.Imagen = Imagen;
-    }
-
-    @Override
-    public String toString() {
-        return "Pelicula{" + "NOriginal=" + NOriginal + ", NPelicula=" + NPelicula + ", Resena=" + Resena + ", Sinopsis=" + Sinopsis + ", Imagen=" + Imagen + '}';
+    public void setArbolB(ArbolBinBus ArbolB) {
+        this.ArbolB = ArbolB;
     }
 
    
    
+  
   
     
     
