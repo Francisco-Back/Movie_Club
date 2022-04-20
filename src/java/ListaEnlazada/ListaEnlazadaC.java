@@ -26,7 +26,7 @@ public class ListaEnlazadaC {
       return ultimo==null;
   }
   //metodo insertar
-  public ListaEnlazadaC Ingresar(ApiCartelera Dato){
+  public ListaEnlazadaC Ingresar(Pelicula Dato){
       Nodo Nuevo=new Nodo(Dato);
        if(ultimo!=null){
            Nuevo.siguiente=ultimo.siguiente;

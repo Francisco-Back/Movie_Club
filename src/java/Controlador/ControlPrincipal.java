@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import ApiPeliculas.ApiCartelera;
 import java.io.IOException;
 
 import ListaEnlazada.ListaEnlazadaC;
@@ -23,6 +24,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,6 +34,7 @@ import java.net.URL;
 public class ControlPrincipal extends HttpServlet {
 
     ListaEnlazadaC Pelicula = new ListaEnlazadaC();
+
     Nodo Aux = null;
     Pelicula mv = new Pelicula();
 
@@ -149,19 +152,17 @@ public class ControlPrincipal extends HttpServlet {
                 break;
 
             case "ApiCartelera":
-            
-                  ApiCartelera();
-                
-                
+                ObjetoCartelera();
+                System.out.println(ObjetoCartelera());
                 
                 break;
 
             case "ApiPopulares":
-               ApiPopulares();
+               ApiPopularesHT();
 
                 break;
             case "ApiArtistas":
-                ApiArtistas("500");
+                ApiArtistasHT("500");
                 
 
                 break;
@@ -172,7 +173,7 @@ public class ControlPrincipal extends HttpServlet {
         }
     }
     
-public  String ApiCartelera(){
+public  String ApiCarteleraHT(){
     String ApiCarteleraS = "http://api.themoviedb.org/3/movie/now_playing?api_key=3279286a0b6c539866973dfa2740eeec";
     String ApiCarteleraDat="";
                  try {
@@ -194,7 +195,7 @@ public  String ApiCartelera(){
                 }
         return ApiCarteleraDat;
 }
-public String ApiPopulares(){
+public String ApiPopularesHT(){
      String ApiPopulares = "http://api.themoviedb.org/3/movie/popular?api_key=3279286a0b6c539866973dfa2740eeec";
      String ApiPopularesDat="";
                 try {
@@ -216,7 +217,7 @@ public String ApiPopulares(){
                 return ApiPopularesDat;
 }
 
-public String ApiArtistas(String IDP){
+public String ApiArtistasHT(String IDP){
     String ApiArtistasDat="";
                 String ApiArtistas = "http://api.themoviedb.org/3/movie/"+IDP+"/credits?api_key=3279286a0b6c539866973dfa2740eeec";
                 try {
@@ -234,9 +235,67 @@ public String ApiArtistas(String IDP){
                     apiC.disconnect();
                 } catch (Exception e) {
                      System.out.println(e);
+                     
                 }
     return ApiArtistasDat;
 }
+
+public ApiCartelera ObjetoCartelera(){
+     ApiCartelera DatPelicula=new ApiCartelera();
+     ArrayList <ApiCartelera> prueba=new ArrayList<>();
+    try {
+        System.out.println("ingreso");
+        System.out.println(ApiCarteleraHT());
+                   
+                JSONArray ArrApiDat=new JSONArray(ApiCarteleraHT());
+                System.out.println("paso 2");
+                for (int i = 0; i < ArrApiDat.length(); i++) {
+                    System.out.println("Ingreso ya con datos" + ArrApiDat.getString(i));
+                    JSONObject AtributeDat= ArrApiDat.getJSONObject(i);
+                    
+                    
+                    
+   boolean adult=AtributeDat.getBoolean("adult");
+  String backdrop_path=AtributeDat.getString("backdrop_path");
+   float id=  AtributeDat.getFloat("id");
+   String original_language=AtributeDat.getString("original_language");
+   String original_title=AtributeDat.getString("original_title");
+   String overview=AtributeDat.getString("overview");
+   float popularity=AtributeDat.getFloat("popularity");
+   String poster_path=AtributeDat.getString("poster_path");
+   String release_date=AtributeDat.getString("release_date");
+   String title=AtributeDat.getString("title");
+   boolean video=AtributeDat.getBoolean("video");
+   float vote_average=AtributeDat.getFloat("vote_average");
+   float vote_count=AtributeDat.getFloat("vote_count");
+   DatPelicula.setAdult(adult);
+   DatPelicula.setBackdrop_path(backdrop_path);
+   DatPelicula.setId(id);
+   DatPelicula.setOriginal_language(original_language);
+   DatPelicula.setOriginal_title(original_title);
+   DatPelicula.setOverview(overview);
+   DatPelicula.setPopularity(popularity);
+   DatPelicula.setPoster_path(poster_path);
+   DatPelicula.setRelease_date(release_date);
+   DatPelicula.setTitle(title);
+   DatPelicula.setVideo(video);
+   DatPelicula.setVote_average(vote_average);
+   DatPelicula.setVote_count(vote_count);
+   
+prueba.add(DatPelicula);
+   
+                }
+                for (int i = 0; i < prueba.size(); i++) {
+                    System.out.println(prueba.get(i));
+        }
+                
+            } catch (JSONException e) {
+                    System.out.println("Error"+e);
+            }
+              
+    return DatPelicula;
+}
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -275,5 +334,7 @@ public String ApiArtistas(String IDP){
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+ 
 
 }

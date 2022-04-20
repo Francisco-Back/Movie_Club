@@ -13,12 +13,12 @@ import Modelo.Pelicula;
  */
 public class Nodo {
     // se crea los parametros para el nodo
-ApiCartelera Dato;
+Pelicula Dato;
 Nodo siguiente;
 
 
 //se crea el constructor del nodo
-public Nodo(ApiCartelera dato){
+public Nodo(Pelicula dato){
      Dato=dato;
      siguiente=this;
 }
